@@ -30,27 +30,9 @@ if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
     <div class="row main-row">
         <div id="main-wrapper" class="col-md-6 col-lg-6 col-sm-12 col-12">
             <!-- Header row -->
-            <div id="header-row" class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                                data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Royals Trader</a>
-                        <div class="dropdown navbar-text">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['username']; ?>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="logout.php">Logout</a>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
+            <?php
+                echo file_get_contents("header.php");
+            ?>
         </div>
     </div>
 </div>
