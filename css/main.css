@@ -9,6 +9,16 @@
     width: 100%;
 }
 
-.col-profile-info-wrapper {
-    border: 1px solid #ddd;
+.profile-info-table {
+    height: 200px;
+}
+
+.a-edit-profile {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.item-thumb-sm {
+    width: 32px;
 }
