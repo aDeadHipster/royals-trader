@@ -4,3 +4,11 @@
         margin: 0 auto;
     }
 }
+
+.img-profile {
+    width: 100%;
+}
+
+.col-profile-info-wrapper {
+    border: 1px solid #ddd;
+}
