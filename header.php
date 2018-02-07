@@ -1,3 +1,7 @@
+<?php
+include("header.php");
+?>
+
 <div id="header-row" class="row">
     <div class="col-12">
         <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
