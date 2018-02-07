@@ -1,11 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Justin
- * Date: 7-2-2018
- * Time: 08:29
- */
+// Initialize the session
+session_start();
+
+// If session variable is not set it will redirect to login page
+if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
 
 ?>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Royals Trader - Profile</title>
+    <?php include('dependencies.html')?>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row main-row">
+        <div id="main-wrapper" class="col-md-6 col-lg-6 col-sm-12 col-12">
+            <!-- Header row -->
+            <?php
+            include("header.php");
+            ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>
