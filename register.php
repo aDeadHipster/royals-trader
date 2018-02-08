@@ -1,4 +1,5 @@
 <?php
+require_once "bootstrap.php";
 
 /**
  * Created by PhpStorm.
@@ -89,29 +90,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check input errors before inserting in database
     if (empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($discord_err) && empty($email_err)) {
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password, discord, email) VALUES (?, ?, ?, ?)";
-        if ($stmt = mysqli_prepare($link, $sql)) {
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password, $param_discord, $param_email);
+        $user = new User();
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setDiscord($discord);
+        $user->setIGNs("");
+        $user->setReputation(0);
+        $user->setPassword(password_hash($password, PASSWORD_DEFAULT)); // Creates a password hash
 
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_discord = $discord;
-            $param_email = $email;
+        $entityManager->persist($user);
+        $entityManager->flush();
 
-            // Attempt to execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-                // Redirect to login page
-                header("location: login.php");
-            } else {
-                echo "Something went wrong. Please try again later.";
-            }
-        }
-
-        // Close statement
-        mysqli_stmt_close($stmt);
+        header("location: login.php");
     }
 
     // Close connection
